@@ -62,9 +62,9 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection.Tests
 
         
 
-        private static List<FraudRadar.FraudResult> ExecuteTest(string filePath)
+        private static List<FraudResult> ExecuteTest(string filePath)
         {
-            var fraudRadar = new FraudRadar();
+            var fraudRadar = new FraudRadar(new OrderNormalizer(), new OrderCreator());
 
             return fraudRadar.Check(filePath).ToList();
         }
