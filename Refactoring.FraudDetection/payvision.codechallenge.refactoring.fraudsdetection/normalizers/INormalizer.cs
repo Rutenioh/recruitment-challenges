@@ -6,12 +6,12 @@
 
 namespace Payvision.CodeChallenge.Refactoring.FraudDetection
 {
-    public class StateNormalizerRule : IRule
+    public interface INormalizer
     {
-        public void Normalize(Order order)
-        {
-            //Normalize state
-            order.State = order.State.Replace("il", "illinois").Replace("ca", "california").Replace("ny", "new york");
-        }
+        string NormalizeMail(string mail);
+
+        string NormalizeStreet(string street);
+
+        string NormalizeState(string state);
     }
 }

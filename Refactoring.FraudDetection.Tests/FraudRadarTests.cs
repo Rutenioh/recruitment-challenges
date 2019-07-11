@@ -12,6 +12,7 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection.Tests
     using System.Linq;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Payvision.CodeChallenge.Refactoring.FraudDetection.payvision.codechallenge.refactoring.fraudsdetection.frauds;
 
     [TestClass]
     public class FraudRadarTests
@@ -60,11 +61,21 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection.Tests
             result.Count().ShouldBeEquivalentTo(2, "The result should contains the number of lines of the file");
         }
 
-        
+        [TestMethod]
+        [DeploymentItem("./Files/OneLineWithWrongInts.txt", "Files")]
+        [ExpectedException(typeof(InvalidCastException),
+            "Wrong number in order")]
+        public void CheckFraud_OneLineWithWrongInts()
+        {
+            var result = ExecuteTest(Path.Combine(Environment.CurrentDirectory, "Files", "OneLineWithWrongInts.txt"));
+
+        }
+
+
 
         private static List<FraudResult> ExecuteTest(string filePath)
         {
-            var fraudRadar = new FraudRadar(new OrderNormalizer(), new OrderCreator());
+            var fraudRadar = new FraudRadar(new OrderProvider(new OrderNormalizer()), new DefaultFraudChecker());
 
             return fraudRadar.Check(filePath).ToList();
         }

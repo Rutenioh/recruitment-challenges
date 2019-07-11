@@ -4,10 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Payvision.CodeChallenge.Refactoring.FraudDetection
 {
-    public interface IRule
+    public interface IFraudChecker
     {
-        void Normalize(Order order);
+        List<FraudResult> check(List<Order> orders);
     }
 }
