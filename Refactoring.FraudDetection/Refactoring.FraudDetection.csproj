@@ -41,18 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FraudRadar.cs" />
-    <Compile Include="FraudResult.cs" />
-    <Compile Include="INormalizer.cs" />
-    <Compile Include="IOrderCreator.cs" />
-    <Compile Include="IRule.cs" />
-    <Compile Include="MailNormalizerRule.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderCreator.cs" />
-    <Compile Include="OrderNormalizer.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\DefaultFraudChecker.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\rules\EqualsAddressFraudRule.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\rules\EqualsMailFraudRule.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\rules\IFraudRule.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\radar\FraudRadar.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\model\FraudResult.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\providers\IOrderProvider.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\INormalizer.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\OrderNormalizer.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\model\Order.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\providers\OrderProvider.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\IFraudChecker.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\utils\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateNormalizerRule.cs" />
-    <Compile Include="StreetNormalizerRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
