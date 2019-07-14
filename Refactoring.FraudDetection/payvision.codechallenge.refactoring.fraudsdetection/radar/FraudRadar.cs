@@ -11,20 +11,20 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection
     public class FraudRadar
     {
 
-        public IOrderCreator orderCreator;
+        public IOrderProvider orderProvider;
         public IFraudChecker fraudChecker;
 
-        public FraudRadar(IOrderCreator orderCreator, IFraudChecker fraudChecker)
+        public FraudRadar(IOrderProvider orderProvider, IFraudChecker fraudChecker)
         {
-            this.orderCreator = orderCreator;
+            this.orderProvider = orderProvider;
             this.fraudChecker = fraudChecker;
         }
 
 
-        public IEnumerable<FraudResult> Check(string filePath)
+        public IEnumerable<FraudResult> Check()
         {
 
-            List<Order> orders = orderCreator.getOrders(filePath);
+            List<Order> orders = orderProvider.getOrders();
 
             return fraudChecker.check(orders);
         }

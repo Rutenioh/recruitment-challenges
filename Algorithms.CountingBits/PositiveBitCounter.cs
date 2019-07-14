@@ -11,6 +11,9 @@ namespace Payvision.CodeChallenge.Algorithms.CountingBits
 
     public class PositiveBitCounter
     {
+        private const int ZERO = 0;
+        private const int BIT_1 = 1;
+
         public IEnumerable<int> Count(int input)
         {
 
@@ -18,11 +21,6 @@ namespace Payvision.CodeChallenge.Algorithms.CountingBits
             {
                 throw new ArgumentException();
             }
-            if (input == 0)
-            {
-                return new List<int>() { 0 };
-            }
-
             return CountPositiveBit(input);
         }
 
@@ -32,15 +30,15 @@ namespace Payvision.CodeChallenge.Algorithms.CountingBits
             int position = 0;
             int counts = 0;
 
-            while (input != 0)
+            while (input != ZERO)
             {
-                if ((input & 1) == 1)
+                if ((input & 1) == BIT_1)
                 {
                     result.Add(position);
                     counts++;
                 }
                 position++;
-                input >>= 1;
+                input >>= BIT_1;
             }
             result.Insert(0, counts);
             return result; 

@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\factories\INormalizerFactory.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\MailNormalizer.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\factories\OrderNormalizerFactory.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\StateNormalizer.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\StreetNormalizer.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\DefaultFraudChecker.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\rules\EqualsAddressFraudRule.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\rules\EqualsMailFraudRule.cs" />
@@ -49,11 +54,9 @@
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\model\FraudResult.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\providers\IOrderProvider.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\INormalizer.cs" />
-    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\normalizers\OrderNormalizer.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\model\Order.cs" />
-    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\providers\OrderProvider.cs" />
+    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\providers\FileOrderProvider.cs" />
     <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\frauds\IFraudChecker.cs" />
-    <Compile Include="payvision.codechallenge.refactoring.fraudsdetection\utils\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

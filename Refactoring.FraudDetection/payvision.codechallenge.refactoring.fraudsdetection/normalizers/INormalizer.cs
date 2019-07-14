@@ -8,10 +8,7 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection
 {
     public interface INormalizer
     {
-        string NormalizeMail(string mail);
+        string Normalize(string property);
 
-        string NormalizeStreet(string street);
-
-        string NormalizeState(string state);
     }
 }

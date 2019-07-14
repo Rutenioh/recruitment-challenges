@@ -4,27 +4,30 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Payvision.CodeChallenge.Refactoring.FraudDetection.payvision.codechallenge.refactoring.fraudsdetection.utils;
+using Payvision.CodeChallenge.Refactoring.FraudDetection.payvision.codechallenge.refactoring.fraudsdetection.factories;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Payvision.CodeChallenge.Refactoring.FraudDetection
 {
-    public class OrderProvider: IOrderCreator
+    public class FileOrderProvider: IOrderProvider
     {
-        private INormalizer normalizer;
+        private INormalizerFactory normalizerFactory;
 
-        public OrderProvider(INormalizer normalizer)
+        private string filePath;
+
+        public FileOrderProvider(INormalizerFactory normalizerFactory, string filePath)
         {
-            this.normalizer = normalizer;
+            this.normalizerFactory = normalizerFactory;
+            this.filePath = filePath;
         }
 
         /**
          * Get the orders from a file
          * 
          */
-        public List<Order> getOrders(string filePath)
+        public List<Order> getOrders()
         {
             var lines = File.ReadAllLines(filePath);
 
@@ -37,10 +40,10 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection
                 {
                     OrderId = ValidateInt(items[0]),
                     DealId = ValidateInt(items[1]),
-                    Email = normalizer.NormalizeMail(items[2].ToLower()),
-                    Street = normalizer.NormalizeStreet(items[3].ToLower()),
+                    Email = normalizerFactory.Create(OrderNormalizerFactory.MAIL).Normalize(items[2].ToLower()),
+                    Street = normalizerFactory.Create(OrderNormalizerFactory.STREET).Normalize(items[3].ToLower()),
                     City = items[4].ToLower(),
-                    State = normalizer.NormalizeState(items[5].ToLower()), 
+                    State = normalizerFactory.Create(OrderNormalizerFactory.STATE).Normalize(items[5].ToLower()), 
                     ZipCode = items[6],
                     CreditCard = items[7]
                 };

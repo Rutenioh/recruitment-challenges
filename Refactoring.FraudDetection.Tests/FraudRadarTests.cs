@@ -12,6 +12,7 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection.Tests
     using System.Linq;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Payvision.CodeChallenge.Refactoring.FraudDetection.payvision.codechallenge.refactoring.fraudsdetection.factories;
     using Payvision.CodeChallenge.Refactoring.FraudDetection.payvision.codechallenge.refactoring.fraudsdetection.frauds;
 
     [TestClass]
@@ -75,9 +76,9 @@ namespace Payvision.CodeChallenge.Refactoring.FraudDetection.Tests
 
         private static List<FraudResult> ExecuteTest(string filePath)
         {
-            var fraudRadar = new FraudRadar(new OrderProvider(new OrderNormalizer()), new DefaultFraudChecker());
+            var fraudRadar = new FraudRadar(new FileOrderProvider(new OrderNormalizerFactory(), filePath), new DefaultFraudChecker());
 
-            return fraudRadar.Check(filePath).ToList();
+            return fraudRadar.Check().ToList();
         }
     }
 }

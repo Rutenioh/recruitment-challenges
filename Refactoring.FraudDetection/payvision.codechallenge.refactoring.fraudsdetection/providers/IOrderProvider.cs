@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 namespace Payvision.CodeChallenge.Refactoring.FraudDetection
 {
-    public interface IOrderCreator
+    public interface IOrderProvider
     {
-        List<Order> getOrders(string filePath);
+        List<Order> getOrders();
     }
 }
